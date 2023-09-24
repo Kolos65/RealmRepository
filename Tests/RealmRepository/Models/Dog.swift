@@ -7,8 +7,10 @@
 
 import Foundation
 import RealmSwift
+import RealmRepository
 
-class Dog: Object {
+@DataModel
+final class Dog: Object {
     @Persisted(primaryKey: true)
     var id = UUID()
 

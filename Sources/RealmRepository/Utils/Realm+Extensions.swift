@@ -8,7 +8,7 @@
 import RealmSwift
 import Foundation
 
-extension Results where Element: Object {
+extension Results where Element: Object, Element: Detachable {
     var asArray: [Element] { Array(self) }
     func asDetachedArray() -> [Element] {
         asArray.map { $0.detached() }

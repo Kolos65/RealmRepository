@@ -8,9 +8,9 @@
 import RealmSwift
 
 extension Repository {
-    nonisolated func createStream<Model: Object>(
+    nonisolated func createStream(
         from models: @escaping @RealmActor () throws -> Results<Model>
-    ) -> AsyncThrowingStream<[Model], Error> {
+    ) -> AsyncThrowingStream<[Model], Error> where Model: Detachable {
         .init { continuation in
             Task.detached { @RealmActor in
                 do {

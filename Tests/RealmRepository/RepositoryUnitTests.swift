@@ -1,5 +1,5 @@
 //
-//  RepositoryTests.swift
+//  RepositoryUnitTests.swift
 //  RealmRepository
 //
 //  Created by Kolos Foltanyi on 2023. 08. 06..
@@ -12,7 +12,7 @@ import RealmSwift
 
 @testable import RealmRepository
 
-class RepositoryTests: XCTestCase {
+class RepositoryUnitTests: XCTestCase {
     private var sut: Repository<Person>!
     private var storage: RealmStorageContext!
 

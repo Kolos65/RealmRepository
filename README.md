@@ -43,7 +43,8 @@ try await RealmStorage.default.connect(to: "UserId", password: "Password", salt:
 Just like working with `RealmSwift` you first need to create a data model that inherits form Realm's Object interface:
 
 ```swift
-class User: Object {
+@DataModel
+final class User: Object {
     @Persisted(primaryKey: true) var id = UUID()
     @Persisted var name: String = ""
     @Persisted var age: Int = 0
@@ -85,7 +86,7 @@ To query objects based on a specified inclusion criteria:
 ```swift
 import RealmSwift
 
-let user = try await repository.getBy { $0.name == "John" }
+let johns = try await repository.getBy { $0.name == "John" }
 ```
 Don't forget to import `RealmSwift` otherwise operators won't work on the `Query` proxy.
 
@@ -163,7 +164,7 @@ repository.removeCombine(user)
     })
     .store(in: &cancellables)
 ```
-The Combine equivalent `stream` is the `publisher` property taht emits values of the `Repository` upon changes:
+The Combine equivalent `stream` is the `publisher` property that emits values of the `Repository` upon changes:
 ```swift
 repository.publisher
     .sink(receiveCompletion: { _ in }, receiveValue: { users in

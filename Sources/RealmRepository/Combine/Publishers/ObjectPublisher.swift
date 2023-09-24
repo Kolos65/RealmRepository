@@ -8,7 +8,7 @@
 import Combine
 import RealmSwift
 
-struct ObjectPublisher<Model: Object>: Publisher {
+struct ObjectPublisher<Model: Object>: Publisher where Model: Detachable {
 
     typealias Output = Model
     typealias Failure = Error
