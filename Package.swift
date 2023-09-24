@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.9
 
 import PackageDescription
 
@@ -18,7 +18,11 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/realm/realm-swift.git",
-            from: "10.42.0"
+            from: "10.42.3"
+        ),
+        .package(
+            name: "RealmRepositoryMacros",
+            path: "./Sources/RealmRepositoryMacros"
         )
     ],
     targets: [
@@ -26,7 +30,8 @@ let package = Package(
             name: "RealmRepository",
             dependencies: [
                 .product(name: "Realm", package: "realm-swift"),
-                .product(name: "RealmSwift", package: "realm-swift")
+                .product(name: "RealmSwift", package: "realm-swift"),
+                .product(name: "RealmRepositoryMacros", package: "RealmRepositoryMacros")
             ],
             path: "Sources/RealmRepository/"
         ),

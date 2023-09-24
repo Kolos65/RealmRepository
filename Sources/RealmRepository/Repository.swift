@@ -18,7 +18,7 @@ public enum RepositoryError: Error {
 ///
 /// Repository ensures data consistency and thread safety by using a global actor called `@RealmActor` to synchronize database operations and create actor-confined `Realms`.
 @RealmActor
-public class Repository<Model: Object> {
+public class Repository<Model: Object> where Model: Detachable {
 
     // MARK: - Internal properties
 
